@@ -6,12 +6,14 @@ import {
     Text,
     Stack,
     Image,
-    Button
+    Button,
+    Skeleton
   } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
   import { useShoppingCart } from '../lib/ShoppingCartContext';
   
   export default function Flower({img, name, color, type, price, id}) {
+    const [loaded, setLoaded] = useState(false)
     const format = (val) => `$` + (val / 100).toFixed(2)
     const {
       increaseCartQuantity,
@@ -64,13 +66,17 @@ import { useEffect } from 'react';
                 filter: 'blur(20px)',
               },
             }}>
+             <Skeleton isLoaded={loaded}>
             <Image
               rounded={'lg'}
               height={230}
               width={282}
               objectFit={'cover'}
               src={img}
+              alt={name}
+              onLoad={()=>setLoaded(true)}
             />
+            </Skeleton>
           </Box>
           <Stack pt={10} align={'center'}>
             <Text color={color} fontSize={'sm'} textTransform={'uppercase'} fontWeight={'lg'}>
