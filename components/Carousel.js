@@ -124,5 +124,4 @@ export default function Carousel() {
         </Flex>
       </Flex>
     );
-  };
-  
+  }; 
