@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
-import Form from '../components/form'
+import Form from '../components/Form'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Navigation from '../components/Navigation'
