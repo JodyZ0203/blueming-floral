@@ -1,10 +1,8 @@
 
-import { Icon, Field, Button } from "@chakra-ui/react"
-import { FaEnvelope, FaPaperPlane } from "react-icons/fa"
 
-const Form = ({ errorMessage, onSubmit }) => (
+export default function Form({ errorMessage, onSubmit }) {
    
-
+   return(
     <form onSubmit={onSubmit}>
       <h3 className='form-header'>Login</h3>
       <label>
@@ -65,6 +63,6 @@ const Form = ({ errorMessage, onSubmit }) => (
         }
       `}</style>
     </form>
-  )
+   )
+}
   
-export default Form
