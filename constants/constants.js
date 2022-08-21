@@ -13,23 +13,23 @@ export const NAV_ITEMS = [
 
 export const CAROUSEL_ITEMS = [
   {
-    img: "carousel1.jpg",
+    img: "/carousel1.jpeg",
     label: "Deluxe Bouquets",
     description: "Flowers are a gift to this earth. Every flower is a soul blossoming in nature.",
   },
   {
-    img: "carousel2.png",
+    img: "/carousel2.jpg",
     label: "Fresh Seasonal Flowers",
     description: "Impress anyone with the newly designed bouquets",
   },
   {
-    img: "carousel3.jpg",
+    img: "/carousel3.jpeg",
     label: "More choices More happiness",
     description:
       "More you and your special ones.",
   },
   {
-    img: "carousel4.jpg",
+    img: "/carousel4.jpeg",
     label: "Best Price In the Area",
     description: "",
   },

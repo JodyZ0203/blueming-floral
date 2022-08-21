@@ -44,7 +44,7 @@ export default function ShoppingCart({ isOpen }) {
                         return total + (item?.price || 0) * cartItem.quantity
                     }, 0)
                     )}
-              </Box></>) : (<Box><Text fontWeight={'bold'} letterSpacing={'.25px'} textAlign={'center'}>Nothing in here yet. Check out our Best Seller!!!</Text>
+              </Box></>) : (<Box><Text fontWeight={'bold'} letterSpacing={'.25px'} textAlign={'center'}>Nothing in here yet. Check out our Most Popular Bouquet!!!</Text>
               <Flower color={'#d4573e'} name={'Only Rose'} id={'jvdnn94'} price={'2499'} type={'Rose'} img={'https://i.ibb.co/XZ9ccfJ/rose-5.jpg'} /></Box>)
 }
               </Stack>

@@ -57,6 +57,7 @@ import {
           <Image 
             height='100px'
             src='./FullLogo.png'
+            alt={"Blueming Floral Logo"}
           >
           </Image>
           </Link>
