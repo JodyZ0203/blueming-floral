@@ -1,6 +1,6 @@
 import useSWR from "swr"
 import {
-    Text,  Box, Divider, Tag
+    Text,  Box, Divider, Tag, Link
   } from '@chakra-ui/react';
 import {ORDER_STATES} from '../constants/constants'
 
@@ -19,7 +19,9 @@ export default function Order(email){
         {data?.orders.map(order=>(<Box key={order.id} padding={'2%'}>
             <Tag colorScheme={ORDER_STATES[order.state]}>{order.state}</Tag>
             <Text>{new Date(order.createdAt).toLocaleDateString('en-us', {year: "numeric", month:"long", day:"numeric"})}</Text><Text>Order Id: {order.id}</Text>
-        <Text>CAD {format(order.totalMoney.amount)}</Text><Divider borderTop={"1px solid grey"}/></Box>))}
+        <Text>CAD {format(order.totalMoney.amount)}</Text>
+        <Link textDecoration={'underline'} href={`orders/${encodeURIComponent(order.id)}`}>View Details</Link>
+        <Divider marginTop={'0.5%'} borderTop={"1px solid grey"}/></Box>))}
         </>
     )
 }
