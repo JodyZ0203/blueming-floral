@@ -10,8 +10,10 @@ import {
   ListItem,
   ListIcon,
   Button,
+  useToast
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useUser } from '../lib/hooks';
 
 function PriceWrapper({ children }) {
   return (
@@ -27,7 +29,20 @@ function PriceWrapper({ children }) {
   );
 }
 
-export default function Plans() {
+export default function Plans(planId) {
+  const user = useUser()
+  const toast = useToast()
+
+  async function clickHandle(id){
+    if (id == 1){
+      window.open('https://square.link/u/2K7HtV9o', '_blank')
+    } else if (id == 2){
+      window.open('https://square.link/u/ORVBZhHC', '_blank') 
+    } else {
+      window.open('https://square.link/u/9ubKJS1s', '_blank')
+    }
+  }
+
   return (
     <Box py={12}>
       <VStack spacing={2} textAlign="center">
@@ -80,9 +95,20 @@ export default function Plans() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="purple" variant="outline">
+            {user? 
+                <Button w="full" colorScheme="purple" onClick={()=>clickHandle(1)}>
+                  Get Started
+                </Button>
+                :   
+              <Button w="full" colorScheme="purple" onClick={()=> router.push('/login') && toast({
+                title: 'Not Logged In',
+                description: "Create a new account or log into existing account to continue",
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+              })}>
                 Get Started
-              </Button>
+              </Button> }
             </Box>
           </VStack>
         </PriceWrapper>
@@ -149,9 +175,20 @@ export default function Plans() {
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
-                <Button w="full" colorScheme="purple">
+                {user? 
+                <Button w="full" colorScheme="purple" onClick={()=>clickHandle(2)}>
                   Get Started
                 </Button>
+                :   
+              <Button w="full" colorScheme="purple" onClick={()=> router.push('/login') && toast({
+                title: 'Not Logged In',
+                description: "Create a new account or log into existing account to continue",
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+              })}>
+                Get Started
+              </Button> }
               </Box>
             </VStack>
           </Box>
@@ -192,9 +229,20 @@ export default function Plans() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="purple" variant="outline">
+            {user? 
+                <Button w="full" colorScheme="purple" onClick={()=>clickHandle(3)}>
+                  Get Started
+                </Button>
+                :   
+              <Button w="full" colorScheme="purple" onClick={()=> router.push('/login') && toast({
+                title: 'Not Logged In',
+                description: "Create a new account or log into existing account to continue",
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+              })}>
                 Get Started
-              </Button>
+              </Button> }
             </Box>
           </VStack>
         </PriceWrapper>

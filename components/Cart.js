@@ -6,11 +6,9 @@ import Flower from "./Flower"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { useUser } from '../lib/hooks'
 import router from "next/router"
-import { Checkout } from "../lib/square-sdk"
 
 export default function ShoppingCart({ isOpen }) {
     const user = useUser()
-    const userData = JSON.stringify(user, null, 2)
     const toast = useToast()
     const { closeCart, cartItems } = useShoppingCart()
     const btnRef = React.useRef()
