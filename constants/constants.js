@@ -51,3 +51,10 @@ export const FEATURE_ITEMS = [
     icon: FcInTransit,
     description: "Same day delivery upon request. Normally 2-3 days."
   }]
+
+  export const ORDER_STATES = {
+    'DRAFT': 'blackAlpha',
+    'COMPLETED': 'purple',
+    'CANCELLED': 'red',
+    'OPEN': 'green'
+  }
