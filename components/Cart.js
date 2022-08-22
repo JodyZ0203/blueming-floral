@@ -6,15 +6,48 @@ import Flower from "./Flower"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { useUser } from '../lib/hooks'
 import router from "next/router"
+import { Checkout } from "../lib/square-sdk"
 
 export default function ShoppingCart({ isOpen }) {
     const user = useUser()
+    const userData = JSON.stringify(user, null, 2)
     const toast = useToast()
     const { closeCart, cartItems } = useShoppingCart()
     const btnRef = React.useRef()
     const format = (val) => `$` + (val / 100).toFixed(2)
-    const clickHandle = () => {
-        window.open('https://checkout.square.site/merchant/ML4BHR83T5XTW/checkout/H2ZCGH6GKMFINBZULGPYXWAO', '_blank')
+    async function clickHandle() {
+        var finalCart = []
+        for (var i = 0; i < cartItems.length; i++){
+          finalCart.push({
+            uid: cartItems[i].id,
+            name: cartItems[i].name,
+            quantity: String(cartItems[i].quantity),
+            itemType: 'ITEM',
+            basePriceMoney : {
+                amount: Number(cartItems[i].price),
+                currency: 'CAD'
+            }
+          })
+        }
+        const email = user.email
+        const body = {
+          email: email,
+          item: JSON.parse(JSON.stringify(finalCart))
+        }
+        try {
+          const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+          })   
+          const result = await res.json()
+          window.open(result.url, '_blank')
+        } catch (error) {
+          console.error('An unexpected error happened occurred:', error)
+          setErrorMsg(error.message)
+        }
       }
       
     return (
